@@ -2,7 +2,7 @@ FROM alpine:3.10
 
 ARG BUILD_DATE
 ARG VCS_REF
-ARG VERSION
+ARG VERSION=1.29.2591.94
 
 LABEL \
     org.opencontainers.image.vendor="The Goofball - goofball222@gmail.com" \
@@ -28,12 +28,12 @@ ADD root /
 
 RUN set -x \
     && apk add -q --no-cache --virtual .build-deps \
-        bzr curl gcc git go libffi-dev linux-headers \
-        make musl-dev openssl-dev python2-dev py-pip \
+    bzr curl gcc git go libffi-dev linux-headers \
+    make musl-dev openssl-dev python2-dev py-pip \
     && apk add -q --no-cache \
-        bash ca-certificates iptables ip6tables \
-        openssl openvpn procps py2-setuptools \
-        py2-dnspython tzdata wireguard-tools \
+    bash ca-certificates iptables ip6tables \
+    openssl openvpn procps py2-setuptools \
+    py2-dnspython tzdata wireguard-tools \
     && pip install --upgrade pip \
     && go get github.com/pritunl/pritunl-dns \
     && go get github.com/pritunl/pritunl-web \
